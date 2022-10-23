@@ -43,15 +43,18 @@ let contImage = "";
 for(let i = 0; i < images.length; i++){
     const obj = images[i];
     contImage += `
-        <div style= "
+        <div 
+        class="slide-image hidden"
+        style= "
         background-image: url(${obj["url"]});
         background-position: center;
         background-size: cover;
         width: 100%;
         height: 100%;
-        position: relative;">
+        position: relative;
+        ">
             <div class="description">
-                <h3>${obj["title"]}</h3>
+                <h1>${obj["title"]}</h1>
                 <p>${obj["description"]}</p>
             </div>
         </div>
@@ -74,9 +77,72 @@ for(let i = 0; i < images.length; i++){
         width: calc(100% / 5);
         height: 100%;
         position: relative;">
+        <div class="miniature dark"></div>
         </div>
         `;
 };
 
 // inserisco i thumbnails
 containerThumbnails.innerHTML = contThumbnails;
+
+// i pulsanti all'interno del thumbnails
+containerThumbnails.innerHTML += `
+    <span id="right-btn">
+        <i class="fa-solid fa-chevron-right"></i>
+    </span>
+    <span id="left-btn">
+        <i class="fa-solid fa-chevron-left"></i>
+    </span>
+`;
+
+let select = 0;
+// seleziono la classe all'interno dell'imagine 
+const imageSlide = document.getElementsByClassName("slide-image");
+imageSlide[select].classList.add("active");
+imageSlide[select].classList.remove("hidden");
+
+// contenitore per poter selezionare la miniatura 
+const miniature = document.getElementsByClassName("miniature");
+
+// a la prima miniatura va tolta l'effetto dark
+miniature[select].classList.remove("dark");
+
+// prendo i pulsanti
+let btnRight = document.getElementById("right-btn");
+let btnLeft = document.getElementById("left-btn");
+
+// immagine seguente
+function next(){
+    imageSlide[select].classList.remove("active");
+    imageSlide[select].classList.add("hidden");
+    miniature[select].classList.add("dark");
+    if(select < imageSlide.length - 1){
+        select++;
+    } 
+    else{
+        select = 0;
+    }
+    imageSlide[select].classList.add("active");
+    imageSlide[select].classList.remove("hidden");
+    miniature[select].classList.remove("dark");
+};
+
+btnRight.addEventListener("click", next);
+// immagine precedente
+function preview(){
+    imageSlide[select].classList.remove("active");
+    imageSlide[select].classList.add("hidden");
+    miniature[select].classList.add("dark");
+
+    if(select >  0){
+        select--;
+    } 
+    else{
+        select = imageSlide.length - 1;
+    }
+    imageSlide[select].classList.add("active");
+    imageSlide[select].classList.remove("hidden");
+    miniature[select].classList.remove("dark");
+};
+
+btnLeft.addEventListener("click", preview);

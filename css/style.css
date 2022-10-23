@@ -38,3 +38,45 @@
     color: white;
     text-align: right;
 }
+/* i pulsanti all'interno delle miniature */
+#right-btn , #left-btn{
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    vertical-align: middle;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translate(0 , -50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+}
+
+#right-btn{
+    right: 10px;
+}
+
+#left-btn{
+    left: 10px;
+}
+/* diventa visibile */
+.active{
+    display: block;
+}
+/* nascondi */
+.hidden{
+    display: none;
+}
+
+.miniature{
+    width: 100%;
+    height: 100%;
+    border-top: 2px solid white;
+}
+
+.dark{
+    background-color: rgba(0, 0, 0, 0.6);
+}
