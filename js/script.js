@@ -146,3 +146,11 @@ function preview(){
 };
 
 btnLeft.addEventListener("click", preview);
+
+// funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi)
+//  l’immagine attiva dovrà cambiare alla successiva.
+setInterval(autoplay, 3000);
+
+function autoplay(){
+    next();
+};
