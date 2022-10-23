@@ -35,26 +35,48 @@ const images = [
     },
 ];
 
-const caroselloHtml = document.querySelector('.carosello');
+const containerTop = document.getElementById("carosello-top");
 
-// Per stampare ogni slide
-function printSlide(){
-    const carosello = document.createElement('div');
-    images.forEach((nation) => {
-        const template = printTemplate(nation);
-        carosello.innerHTML += template;
-    });
-    caroselloHtml.appendChild(carosello);
-};
-printSlide();
+let contImage = "";
 
-// Crea il contenitore della slide
-function printTemplate(nation){
-    const templateHtml = `
-        <div class="carousel-inner">
-            <h1>${nation.title}</h1>  
-            <img src="${nation.url}" class="w-100">    
-        </div> 
-    `;
-    return templateHtml;
+// stampo le immagini
+for(let i = 0; i < images.length; i++){
+    const obj = images[i];
+    contImage += `
+        <div style= "
+        background-image: url(${obj["url"]});
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 100%;
+        position: relative;">
+            <div class="description">
+                <h3>${obj["title"]}</h3>
+                <p>${obj["description"]}</p>
+            </div>
+        </div>
+        `
 };
+// inserisco le immagini  
+containerTop.innerHTML = contImage;
+
+const containerThumbnails = document.getElementById("carosello-thumbnails");
+let contThumbnails = "";
+
+// stampo i thumbnails
+for(let i = 0; i < images.length; i++){
+    const obj = images[i];
+    contThumbnails += `
+        <div style= "
+        background-image: url(${obj["url"]});
+        background-position: center;
+        background-size: cover;
+        width: calc(100% / 5);
+        height: 100%;
+        position: relative;">
+        </div>
+        `;
+};
+
+// inserisco i thumbnails
+containerThumbnails.innerHTML = contThumbnails;

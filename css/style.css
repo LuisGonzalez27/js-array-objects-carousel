@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* involucro del carosello */
+.wrapper{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+.container{
+    width: 60%;
+    height: 80%;
+}
+/* parte superiore carosello */
+#carosello-top{
+    width: 100%;
+    height: 80%;
+}
+/* parte delle miniature */
+#carosello-thumbnails{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+/* descrizione in alto a destra */
+.description{
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding-right: 20px;
+    color: white;
+    text-align: right;
+}
